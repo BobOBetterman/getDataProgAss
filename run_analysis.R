@@ -52,6 +52,11 @@ titleNotMeanFreq <- grep("meanFreq", names(truncDataSet), ignore.case = TRUE, in
 
 truncDataSet <- truncDataSet[ , titleNotMeanFreq]
 
+#Figure out which columns are not "angle()" as these are measurements between two vectors, not means or stds
+titleNotAngle <- grep("angle", names(truncDataSet), ignore.case = TRUE, invert = TRUE)
+
+truncDataSet <- truncDataSet[ , titleNotAngle]
+
 #Read in the codes for the activity labels
 actLab <- read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors = FALSE)
 
